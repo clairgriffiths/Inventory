@@ -17,6 +17,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.quantity -= 1
     @item.save
+    if @item.quantity <= 0
+      @item.delete
+    end
     redirect_to categories_path
   end
 
