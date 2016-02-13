@@ -3,10 +3,12 @@
   <div style="text-align: center;">
     <%= link_to "Add a new item", new_item_path, class:"btn btn-default" %>
   </div>
-  
-  <% @categories.each do |category| %>
-    <%= link_to "#{category.name}", root_path(:anchor => "#{category.name}"), class:"btn btn-small" %>
-  <% end %>
+  <br>
+  <div>
+    <% @categories.each do |category| %>
+      <%= link_to "#{category.name}", root_path(:anchor => "#{category.name}"), class: "btn btn-default btn-sm" %>
+    <% end %>
+  </div>
   <br>
     <% @categories.each do |category| %>
   
