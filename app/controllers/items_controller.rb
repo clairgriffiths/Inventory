@@ -10,14 +10,14 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.quantity += 1
     @item.save
-    redirect_to items_path
+    redirect_to categories_path
   end
   
   def decrease
     @item = Item.find(params[:id])
     @item.quantity -= 1
     @item.save
-    redirect_to items_path
+    redirect_to categories_path
   end
 
   def new

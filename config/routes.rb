@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   
-  root 'index#items'
+  root 'categories#index'
   resources :items do
     member do
       get :increase
       get :decrease
     end
   end
+  resources :categories
   
   
 

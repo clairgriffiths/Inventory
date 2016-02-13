@@ -1,28 +1,4 @@
 <div class="container">
 
-<h1>All items</h1>
+<h1>Not sure what to put here yet...</h1>
 
-<table class="table">
-  <thead>
-    <tr>
-      <td>Name</td>
-      <td>Category</td>
-      <td>Quantity</td>
-      <td>Increase</td>
-      <td>Decrease</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <% @items.each do |item| %>
-      <td><%= item.name %></td>
-      <td><%= item.category.name %></td>
-      <td><%= item.quantity %></td>
-      <td><%= link_to "Increase", increase_item_path(item) %> </td>
-      <td><%= link_to "Decrease", decrease_item_path(item) %> </td>
-    </tr>
-    <% end %>
-  </tbody>
-  
-</table>
-</div>
