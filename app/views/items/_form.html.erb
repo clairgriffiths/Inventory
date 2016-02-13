@@ -1,0 +1,22 @@
+<div class="formtitle">
+  <%= bootstrap_form_for @item do |form| %>
+  <% if @item.errors.any? %>
+      <div id="error_explanation">
+        <h5><%= pluralize(@item.errors.count, "error") %> prohibited this entry from being saved:</h5>
+        <ul>
+          <% @item.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+          <% end %>
+        </ul>
+			</div>
+		<% end %>
+	
+  <%= form.label :name %>
+  <%= form.text_field :name %>
+  <%= form.select(:category_id, @category_options) %>
+  <%= form.label :quantity %>
+  <%= form.number_field :quantity %>
+  
+  <%= form.submit %>
+  <% end %>
+</div>

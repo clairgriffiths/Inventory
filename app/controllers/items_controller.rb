@@ -19,8 +19,28 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+  end
+  
+  def create
+    @item = Item.create(item_params)
+    if @item.save
+      redirect_to items_path
+    else
+      render 'new'
+    end
   end
 
   def edit
+  end
+  
+  private
+  
+  def item_params
+    params.require(:item).permit(:name, :category_id, :quantity)
+  end
+  
+  def category_options
+    @category_options = Category.all.map{|c| [c.name, c.id]}
   end
 end
