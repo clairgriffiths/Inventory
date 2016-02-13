@@ -1,11 +1,11 @@
 <div class="container">
   <div class="formtitle">
-    <%= bootstrap_form_for @item do |form| %>
-    <% if @item.errors.any? %>
+    <%= bootstrap_form_for @category do |form| %>
+    <% if @category.errors.any? %>
         <div id="error_explanation">
           <h5><%= pluralize(@item.errors.count, "error") %> prohibited this entry from being saved:</h5>
           <ul>
-            <% @item.errors.full_messages.each do |message| %>
+            <% @category.errors.full_messages.each do |message| %>
             <li><%= message %></li>
             <% end %>
           </ul>
@@ -14,9 +14,7 @@
 
 
     <%= form.text_field :name %>
-    <%= form.number_field :quantity %>
     
-    <%= form.select(:category_id, @category_options) %>
     <%= form.submit %>
     <% end %>
   </div>

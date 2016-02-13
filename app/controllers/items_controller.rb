@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.create(item_params)
     if @item.save
-      redirect_to items_path
+      redirect_to categories_path
     else
       render 'new'
     end
@@ -42,7 +42,7 @@ class ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:item).permit(:name, :category_id, :quantity)
+    params.require(:item).permit(:name, :category_id, :quantity, :grams)
   end
   
   def category_options
