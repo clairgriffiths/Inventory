@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
   
+  before_action :category_options, only: [:new, :edit, :update, :create] 
+  
   def index
     @items = Item.all
   end
