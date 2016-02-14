@@ -15,9 +15,9 @@
 
     <%= form.text_field :name %>
     <%= form.number_field :quantity %>
-    
-    <%= form.select(:category_id, @category_options) %>
+    <%= form.text_field :category, :value => params[:category] %>
     <%= form.submit %>
     <% end %>
+    <%= params %>
   </div>
 </div>

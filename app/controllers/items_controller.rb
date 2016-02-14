@@ -18,7 +18,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.quantity -= 1
     @item.save
-    if @item.quantity <= 0
+    if @item.quantity < 0
       @item.delete
     end
     redirect_to cupboard_path(@item.category.cupboard)
@@ -31,7 +31,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.create(item_params)
     if @item.save
-      redirect_to categories_path
+      redirect_to cupboard_path(@item.category.cupboard)
     else
       render 'new'
     end

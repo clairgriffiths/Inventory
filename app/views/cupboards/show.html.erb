@@ -1,67 +1,44 @@
 <div class="container">
+  <div class="row">
   <h1 style="text-align: center;"><%= @cupboard.name %></h1>
- 
+  </div>
+  
   <div>
     <% @cupboard.categories.each do |category| %>
-      <%= link_to "#{category.name}", root_path(:anchor => "#{category.name}"), class: "btn btn-default btn-sm" %>
-    
+    <%= link_to "#{category.name}", cupboard_path(:anchor => "#{category.name}"), class: "btn btn-default btn-sm" %>
+    <% end %>
   </div>
   <br>
-  <% category.items.each do |item| %>
+  
   
   <div>
-  <table class="table table-condensed">
-    <thead>
-      <tr>
-        <td id="<%= category.name %>"><strong><%= category.name %></strong></td>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        
-        <td class="name" ><%= item.name %></td>
-        <% if item.quantity? %>
-          <td><%= item.quantity %></td>
-        <% else %>
-          <td><%= item.grams %>g</td>
+    <% @cupboard.categories.each do |category| %>
+    <h4 id="<%= category.name %>"><%= category.name %></h4>
+    <%= link_to "Add item to this category", new_item_path(:category => category.name), class: "btn btn-default btn-sm" %> 
+    <table class="table table-condensed">
+      <tbody>
+        <tr>
+          <% category.items.each do |item| %>
+          <td class="name" ><%= item.name %></td>
+          <% if item.quantity? %>
+            <td><%= item.quantity %></td>
+          <% else %>
+            <td><%= item.grams %>g</td>
+          <% end %>
+          <td><%= link_to increase_item_path(item), class: "btn btn-default" do %>
+            <i class="glyphicon glyphicon-plus"></i>
+          <% end %>
+            <%= link_to decrease_item_path(item), class: "btn btn-default" do %>
+            <i class="glyphicon glyphicon-minus"></i>
+          <% end %>
+          </td>
+        </tr>
         <% end %>
-        
-        <!-- This isn't working, wrong route?? -->
-        <td><%= link_to increase_item_path(item), class: "btn btn-default" do %>
-          <i class="glyphicon glyphicon-plus"></i>
-        <% end %>
-          <%= link_to decrease_item_path(item), class: "btn btn-default" do %>
-          <i class="glyphicon glyphicon-minus"></i>
-        <% end %>
-        </td>
-        
-        
-      </tr>
-     
-    </tbody>
-    <% end %>
-  </table>
+      </tbody>
+    </table>
+    
+    
   </div>
-  
-  
-  <% @cupboard.categories.each do |category| %>
-  <div>
-  <table class="table table-condensed">
-    <thead>
-      <tr>
-        <td id="<%= category.name %>"><strong><%= category.name %></strong></td>
-        <% category.items.each do |item| %>
-        <%= item.name %>
-        <% end %>
-        <td>
-      </tr>
-    </thead>
-    <tbody>
-      <% end %>
-    </tbody>
-    <% end %>
-  </table>
-  </div>
-  
-  <%= params %>
+  <% end %>
+</div>
   
