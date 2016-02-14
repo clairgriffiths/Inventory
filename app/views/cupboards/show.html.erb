@@ -2,7 +2,7 @@
   <div class="row">
   <h1 style="text-align: center;"><%= @cupboard.name %></h1>
   </div>
-  
+  <%= link_to "Add item manually", new_item_path, class: "btn btn-default btn-sm" %>
   <div>
     <% @cupboard.categories.each do |category| %>
     <%= link_to "#{category.name}", cupboard_path(:anchor => "#{category.name}"), class: "btn btn-default btn-sm" %>
@@ -14,8 +14,7 @@
   <div>
     <% @cupboard.categories.each do |category| %>
     <h4 id="<%= category.name %>"><%= category.name %></h4>
-    <%= link_to "Add item to this category", new_item_path(:category => category.name), class: "btn btn-default btn-sm" %> 
-    <table class="table table-condensed">
+     <table class="table table-condensed">
       <tbody>
         <tr>
           <% category.items.each do |item| %>
@@ -35,10 +34,11 @@
         </tr>
         <% end %>
       </tbody>
+       
     </table>
-    
+    <% end %>
     
   </div>
-  <% end %>
+  
 </div>
   
