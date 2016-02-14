@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
   
-  before_action :category_options, only: [:new, :edit, :update, :create] 
+  before_action :category_options, only: [:new, :edit, :update, :create]
+  
   
   def index
     @items = Item.all
@@ -10,7 +11,7 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.quantity += 1
     @item.save
-    redirect_to categories_path
+    redirect_to cupboard_path(@item.category.cupboard)
   end
   
   def decrease
@@ -20,7 +21,7 @@ class ItemsController < ApplicationController
     if @item.quantity <= 0
       @item.delete
     end
-    redirect_to categories_path
+    redirect_to cupboard_path(@item.category.cupboard)
   end
 
   def new
@@ -48,4 +49,6 @@ class ItemsController < ApplicationController
   def category_options
     @category_options = Category.all.map{|c| [c.name, c.id]}
   end
+  
+  
 end

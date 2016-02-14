@@ -1,0 +1,4 @@
+<h1>Cupboards#index</h1>
+<% @cupboards.each do |cupboard| %>
+  <%= link_to cupboard.name, cupboard_path(cupboard) %>
+<% end %>

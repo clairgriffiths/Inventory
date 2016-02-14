@@ -1,0 +1,2 @@
+module CupboardsHelper
+end

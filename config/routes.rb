@@ -1,14 +1,20 @@
 Rails.application.routes.draw do
   
-  root 'categories#index'
+  get 'cupboards/new'
+
+  get 'cupboards/index'
+
+  root 'cupboards#index'
+  
+  resources :cupboards 
+  resources :categories 
+     
   resources :items do
     member do
       get :increase
       get :decrease
     end
   end
-  resources :categories
-  
   
 
   # The priority is based upon order of creation: first created -> highest priority.
