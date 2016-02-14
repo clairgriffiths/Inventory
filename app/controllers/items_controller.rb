@@ -1,21 +1,24 @@
 class ItemsController < ApplicationController
   
+
+  before_action :find_item, only: [:edit, :update, :increase, :decrease]
   before_action :category_options, only: [:new, :edit, :update, :create]
   
   
   def index
     @items = Item.all
+    
+    
+    
   end
   
   def increase
-    @item = Item.find(params[:id])
     @item.quantity += 1
     @item.save
     redirect_to cupboard_path(@item.category.cupboard)
   end
   
   def decrease
-    @item = Item.find(params[:id])
     @item.quantity -= 1
     @item.save
     if @item.quantity < 0
@@ -43,12 +46,15 @@ class ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:item).permit(:name, :category_id, :quantity, :grams)
+    params.require(:item).permit(:name, :category_id, :quantity, :grams, :ean, :weight, :packnumber)
   end
   
   def category_options
     @category_options = Category.all.map{|c| [c.name, c.id]}
   end
   
+  def find_item
+    @item = Item.find(params[:id])
+  end
   
 end
