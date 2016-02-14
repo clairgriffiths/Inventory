@@ -1,4 +1,12 @@
-<h1>Cupboards#index</h1>
+<div class="container">
+  <div class="row head">
+    <div class="col-md-2">
+      <h1 class="heading">Cupboards</h1>
+      <p class="manual-add"><%= link_to "Add item manually", new_item_path, class: "btn btn-default" %></p>
+    </div>
+  </div>
+
+
 <% @cupboards.each do |cupboard| %>
-  <%= link_to cupboard.name, cupboard_path(cupboard) %>
+  <%= link_to cupboard.name, cupboard_path(cupboard), class:"btn btn-default"  %>
 <% end %>

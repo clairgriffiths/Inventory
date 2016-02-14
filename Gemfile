@@ -17,11 +17,13 @@ gem 'coffee-rails', '~> 4.1.0'
 # Styling
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'bootstrap_form', '~> 2.3'
-gem 'google-api-client'
+
 
 
 #API
 gem 'httparty', '~> 0.13.7'
+gem 'google-api-client', '< 0.9'
+gem 'google_drive', '~> 1.0', '>= 1.0.5'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

@@ -1,3 +1,42 @@
 // Place all the styles related to the cupboards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.category-name {
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  margin: 10px;
+}
+
+.category-jumplinks{
+  text-align: center;
+}
+
+table {
+  width: 150px;
+  
+}
+
+tbody > tr > td {
+    vertical-align: middle !important;
+  }
+
+.name {
+  width: 300px;
+  text-align: left;
+  font-weight: bold;
+  float: left;
+  margin-top: 8px;
+  
+}
+
+.plus-and-minus {
+  width: 100px;
+  float: left;
+}
+
+.quantity{
+  float: left;
+  margin-top: 8px;
+}

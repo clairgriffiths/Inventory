@@ -7,5 +7,22 @@ body {
 
 .table {
   background-color: #a5f3e3;
-  width: 20em;
+  width: 40em;
+  text-align: center;
+  margin: 0 auto !important;
+  float: none !important;
+}
+
+.head {
+  margin: 20px 20px 40px 20px;  
+}
+
+.heading{
+  color: white;
+  float: left;
+}
+
+.manual-add {
+  float: right;
+  margin-top: 20px;
 }

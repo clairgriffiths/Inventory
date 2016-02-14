@@ -2,12 +2,30 @@ class Item < ActiveRecord::Base
   
   belongs_to :category
   
+  require "google/api_client"
+  require "google_drive"
   
+  @eans1 = []
+  
+  def self.get_eans
+    session = GoogleDrive.saved_session("config.json")
+    file = session.file_by_title("Barcode Scanner history")
+    # Overwrites whatever was in there before
+    file.download_to_file("/home/nitrous/code/Inventory/tmp/test.txt")
+    # Deletes the file from the drive, not locally
+    file.delete
+  end
+  
+  def self.extract_eans
+    CSV.foreach("/home/nitrous/code/Inventory/tmp/test.txt") do |csv|
+      @eans1 << csv[0]
+    end
+    @eans1
+  end
   
   def self.ean_exists?
-    @eans = ["5011308318662", "4005808230860", "5011451103849", "98765432"]
-    
-    @eans.each do |ean|
+    # Need to get the list of EAN numbers
+    @eans1.each do |ean|
       if Item.where(:ean => ean).blank?
         @ean_lookup << ean
         @ean_lookup
@@ -27,7 +45,6 @@ class Item < ActiveRecord::Base
       if body == {} || body["0"]["productname"] == nil
         Item.create(ean: ean, quantity: 1)
       else
-         
         @api_name = body["0"]["productname"]
         Item.create(name: @api_name, quantity: 1)
       end
