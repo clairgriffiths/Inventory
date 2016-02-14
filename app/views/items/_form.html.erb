@@ -15,9 +15,11 @@
 
     <%= form.text_field :name %>
     <%= form.number_field :quantity %>
-    <%= form.text_field :category, :value => params[:category] %>
+    <%= form.select(:category_id, @category_options) %>
+    <%= form.number_field :weight %>
+    <%= form.number_field :packnumber %>
     <%= form.submit %>
     <% end %>
-    <%= params %>
+    
   </div>
 </div>

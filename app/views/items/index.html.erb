@@ -1,6 +1,37 @@
 <div class="container">
 
-<h1>Not sure what to put here yet...</h1>
+  <div class="col-md-6">
+  <h1>Items to update</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <td>Name</td>
+        <td>Quantity</td>
+        <td>Category</td>
+        <td>Weight</td>
+        <td>Number</td>
+        <td></td>
+      </tr>      
+    </thead>
+    <tbody>
+      <tr>
+      <% @need_cataloging.each do |item| %>
+        <td><%= item.name %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.category %></td>
+        <td><%= item.weight %></td>
+        <td><%= item.packnumber %></td>
+        <td><%= link_to "Update", edit_item_path(item) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  </div>
+</div>
+    
+    
+    
+    
   
-<%= button_to "run api", action
 
+  

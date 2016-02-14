@@ -7,9 +7,7 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.all
-    
-    
-    
+    @need_cataloging = Item.all.select{|item| item.category_id == nil}
   end
   
   def increase
@@ -21,12 +19,9 @@ class ItemsController < ApplicationController
   def decrease
     @item.quantity -= 1
     @item.save
-    if @item.quantity < 0
-      @item.delete
-    end
     redirect_to cupboard_path(@item.category.cupboard)
   end
-
+  
   def new
     @item = Item.new
   end
@@ -41,6 +36,14 @@ class ItemsController < ApplicationController
   end
 
   def edit
+  end
+  
+  def update
+    if @item.update(item_params)
+      redirect_to items_path
+    else
+      redner 'edit'
+    end
   end
   
   private

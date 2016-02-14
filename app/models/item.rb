@@ -12,11 +12,9 @@ class Item < ActiveRecord::Base
     @api_name = body["0"]["productname"]
     
     # Check it isn't already in there
-   
     if Item.where(:ean => @ean).blank?
       Item.create(name: @api_name, quantity: 1, ean: @ean)
     else
-      
       @item1 = Item.find_by(:ean => @ean)
       @item1.update(:quantity => (@item1.quantity += 1))
       @item1.save

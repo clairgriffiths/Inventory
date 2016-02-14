@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160214102116) do
+ActiveRecord::Schema.define(version: 20160214113303) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20160214102116) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "category_id"
-    t.integer  "grams"
     t.string   "ean"
     t.integer  "weight"
     t.integer  "packnumber"
