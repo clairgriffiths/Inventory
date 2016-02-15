@@ -1,7 +1,7 @@
 <%= bootstrap_nested_form_for @recipe do |f| %>
 
   <%= f.text_field :name %>
-<%= f.select :meal, [["Breakfast"], ["Lunch"], ["Snack"], ["Soup"]], { label: "Choose meal:" }, { class: "selectpicker" } %>
+  <%= f.select :meal, [["Breakfast"], ["Lunch"], ["Snack"], ["Soup"]], { label: "Choose meal:" }, { class: "selectpicker" } %>
 
   <h4>Ingredients:</h4>
     <table class="table">

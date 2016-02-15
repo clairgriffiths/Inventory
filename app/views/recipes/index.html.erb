@@ -5,10 +5,11 @@
     </div>
   </div>
   
-  <%= link_to "Add recipe", new_recipe_path %>
+  <%= link_to "Add recipe", new_recipe_path %><br>
   
   <% @recipes.each do |recipe| %>
-  <%= recipe.name %>
+  <%= link_to recipe.name, recipe_path(recipe) %>
+  
   <% end %>
   
   
