@@ -45,12 +45,12 @@ class ItemsController < ApplicationController
     if @item.update(item_params)
       redirect_to items_path
     else
-      redner 'edit'
+      render 'edit'
     end
   end
   
   def shopping_list
-    @items = Item.all.select{|item| item.shopping_list == true}
+    @items = Item.all.select{|item| item.shopping_list == true && item.quantity <= 1}
   end
   
   private
