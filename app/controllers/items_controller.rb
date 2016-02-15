@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   
 
-  before_action :find_item, only: [:edit, :update, :increase, :decrease]
+  before_action :find_item, only: [:show, :edit, :update, :increase, :decrease]
   before_action :category_options, only: [:new, :edit, :update, :create]
   
   
@@ -38,6 +38,9 @@ class ItemsController < ApplicationController
   def edit
   end
   
+  def show
+  end
+  
   def update
     if @item.update(item_params)
       redirect_to items_path
@@ -46,10 +49,14 @@ class ItemsController < ApplicationController
     end
   end
   
+  def shopping_list
+    @items = Item.all.select{|item| item.shopping_list == true}
+  end
+  
   private
   
   def item_params
-    params.require(:item).permit(:name, :category_id, :quantity, :grams, :ean, :weight, :packnumber)
+    params.require(:item).permit(:name, :category_id, :quantity, :ean, :weight, :packnumber, :shopping_list)
   end
   
   def category_options

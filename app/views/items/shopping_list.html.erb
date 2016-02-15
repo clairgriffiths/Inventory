@@ -1,0 +1,13 @@
+<h1>Shopping list</h1>
+
+<div class="col-md-8">
+
+  <% grouped = @items.group_by{|item| item.category.name} %>
+  <% grouped.each do |group, items| %>
+  <h4><%= group %></h4>
+    <% items.each do |item| %>
+      <ul>
+        <li><%= item.name %></li>
+      </ul>
+    <% end %>
+  <% end %>

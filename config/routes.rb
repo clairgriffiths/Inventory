@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
   
-  get 'cupboards/new'
-
-  get 'cupboards/index'
-
+  get  'items/shopping_list' => 'items#shopping_list'
+  
   root 'cupboards#index'
   
   resources :cupboards 
@@ -13,6 +11,7 @@ Rails.application.routes.draw do
     member do
       get :increase
       get :decrease
+     
     end
   end
   
