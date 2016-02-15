@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="row head">
+    <div class="col-md-2">
+      <h1 class="heading">Recipes</h1>
+    </div>
+  </div>
+  
+  <%= link_to "Add recipe", new_recipe_path %>
+  
+  <% @recipes.each do |recipe| %>
+  <%= recipe.name %>
+  <% end %>
+  
+  
+</div>

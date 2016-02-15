@@ -17,7 +17,7 @@ gem 'coffee-rails', '~> 4.1.0'
 # Styling
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'bootstrap_form', '~> 2.3'
-
+gem "nested_form"
 
 
 #API

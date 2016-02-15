@@ -1,0 +1,28 @@
+<%= bootstrap_nested_form_for @recipe do |f| %>
+
+  <%= f.text_field :name %>
+<%= f.select :meal, [["Breakfast"], ["Lunch"], ["Snack"], ["Soup"]], { label: "Choose meal:" }, { class: "selectpicker" } %>
+
+  <h4>Ingredients:</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Quantity</td>
+        </tr>
+      </thead>
+      <tbody>
+        <%= f.fields_for :ingredients do |ingredients_form| %>
+        <tr>
+          <td><%= ingredients_form.text_field :name, hide_label: true, placeholder: "Add ingredient" %></td>
+          <td><%= ingredients_form.text_field :quantity, hide_label: true, placeholder: "Add quantity" %></td>
+        </tr>
+      </tbody>
+      <% end %>
+    </table>
+
+  <%= f.text_area :instructions %>
+  <%= f.text_field :picture_url %>
+  <%= f.submit "Save Recipe" %>
+
+  <% end %>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   
   resources :cupboards 
   resources :categories 
-     
+  resources :recipes   
   resources :items do
     member do
       get :increase
