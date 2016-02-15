@@ -2,12 +2,21 @@
   <div class="row head">
     <div class="col-md-5">
       <h1 class="heading"><%= @recipe.name %></h1>
+      <p class="top-button"><%= link_to "Back to Recipes", recipes_path, class: "btn btn-default" %></p>
     </div>
   </div>
   
+   
   <div class="row">
-    <p>Ingredients</p>
-    <table class="table">
+    
+      <img class="center-block", src="<%= @recipe.picture_url %>">
+    
+  </div>
+  
+  
+  <div class="row">
+    <h3 class="ingredient-title">Ingredients</h3>
+    <table class="table ingredients">
       <thead>
         <tr>
           <td>Quantity needed</td>
@@ -17,12 +26,23 @@
       </thead>
       <tbody>
         <tr>
-          <% @recipe.ingredients.each do |ingredient| %>
-          <td><%= ingredient.quantity %></td>
-          <td><%= ingredient.name %></td>
-          <td></td>
+        <% @recipe.ingredients.each do |ingredient| %>
+            <td><%= ingredient.quantity %></td>
+            <td><%= ingredient.name %></td>
+            <% if found_item(ingredient) != nil %>
+              <td><%= @found_item.quantity %> x <%= @found_item.weight %>g</td>
+            <% else %>
+              <td style="color: red;">Need to buy</td>
+            <% end %>
         </tr>
         <% end %>
       </tbody>
     </table>
   </div>
+    
+    <div class="row">
+      <div class="col-md-3 instructions">
+        <%= @recipe.instructions %>
+      </div>
+    </div>
+</div>

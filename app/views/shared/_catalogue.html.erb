@@ -1,0 +1,6 @@
+<div class="row catalogue-flash">
+  <% if Item.all.select{|item| item.category_id == nil}.count > 0 %>
+    <p>You have items that need cataloging</p>
+    <p><%= link_to "Catalogue now", items_path, class:"btn btn-default" %></p>
+  <% end %>
+</div>

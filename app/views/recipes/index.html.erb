@@ -2,15 +2,24 @@
   <div class="row head">
     <div class="col-md-2">
       <h1 class="heading">Recipes</h1>
+      <p class="top-button"><%= link_to "Add recipe", new_recipe_path, class: "btn btn-default"  %></p>
     </div>
   </div>
   
-  <%= link_to "Add recipe", new_recipe_path %><br>
   
-  <% @recipes.each do |recipe| %>
-  <%= link_to recipe.name, recipe_path(recipe) %>
-  
-  <% end %>
-  
+  <div class="col-md-8">
+  <!-- Why isn't this an instance variable? -->
+  <% grouped_recipes.each do |meal, recipe| %>
+    <h4 class="category-name"><%= meal %></h4>
+    <table class="table">
+      <tr>
+        <% recipe.each do |recipe| %>
+          <img class="center-block" style="width: 100px;", src="<%= recipe.picture_url %>">
+          <td><%= link_to recipe.name, recipe_path(recipe) %></td>
+        <% end %>
+      </tr>
+    </table>
+    <% end %>
+  </div>
   
 </div>

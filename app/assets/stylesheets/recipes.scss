@@ -1,3 +1,31 @@
 // Place all the styles related to the recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.instructions {
+  text-align: center;
+  background-color: #a5f3e3;
+  margin-top: 30px;
+}
+
+.ingredient-title {
+  text-align: center;
+  color: white;
+}
+
+.ingredients {
+  margin-bottom: 50px;
+}
+
+.instructions {
+  text-align: center;
+  background-color: #a5f3e3;
+  margin-top: 30px;
+  margin-bottom: 100px;
+}
+
+.recipe-image {
+  width: 300px;
+  height: auto;
+  margin: 0 auto;
+}

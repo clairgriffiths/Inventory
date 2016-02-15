@@ -13,13 +13,13 @@ class ItemsController < ApplicationController
   def increase
     @item.quantity += 1
     @item.save
-    redirect_to cupboard_path(@item.category.cupboard)
+    redirect_to cupboard_path(@item.category.cupboard, :anchor => "#{@item.category.name}")
   end
   
   def decrease
     @item.quantity -= 1
     @item.save
-    redirect_to cupboard_path(@item.category.cupboard)
+    redirect_to cupboard_path(@item.category.cupboard, :anchor => "#{@item.category.name}")
   end
   
   def new
@@ -30,6 +30,7 @@ class ItemsController < ApplicationController
     @item = Item.create(item_params)
     if @item.save
       redirect_to cupboard_path(@item.category.cupboard)
+      flash[:success] = "Yup, that saved"
     else
       render 'new'
     end
@@ -43,7 +44,11 @@ class ItemsController < ApplicationController
   
   def update
     if @item.update(item_params)
-      redirect_to items_path
+      if Item.all.select{|item| item.category_id == nil}.empty?
+        redirect_to cupboards_path
+      else
+        redirect_to items_path
+      end
     else
       render 'edit'
     end

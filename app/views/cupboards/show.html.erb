@@ -2,19 +2,19 @@
   <div class="row head">
     <div class="col-md-2">
       <h1 class="heading"><%= @cupboard.name %></h1>
-      <p class="manual-add"><%= link_to "Add item manually", new_item_path, class: "btn btn-default" %></p>
+      <p class="top-button"><%= link_to "Back to Cupboards", cupboards_path, class: "btn btn-default" %></p>
     </div>
   </div>
   
+  
+  
   <div class="row category-jumplinks">
     <% @cupboard.categories.each do |category| %>
-    <%= link_to "#{category.name}", cupboard_path(:anchor => "#{category.name}"), class: "btn btn-default" %>
+      <%= link_to "#{category.name}", cupboard_path(:anchor => "#{category.name}"), class: "btn btn-default" %>
     <% end %>
   </div>
   
   <br>
-  
-  
   
   <div class="col-md-8">
     <% @cupboard.categories.each do |category| %>

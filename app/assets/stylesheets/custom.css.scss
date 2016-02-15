@@ -11,6 +11,7 @@ body {
   text-align: center;
   margin: 0 auto !important;
   float: none !important;
+  border-radius: 4px;
 }
 
 .head {
@@ -22,7 +23,18 @@ body {
   float: left;
 }
 
-.manual-add {
+.top-button {
   float: right;
   margin-top: 20px;
+}
+
+.catalogue-flash {
+  text-align: center;
+  background-color: #c0392b;
+  color: white;
+}
+
+.title {
+  text-align: center;
+  color: white;
 }

@@ -2,11 +2,25 @@
   <div class="row head">
     <div class="col-md-2">
       <h1 class="heading">Cupboards</h1>
-      <p class="manual-add"><%= link_to "Add item manually", new_item_path, class: "btn btn-default" %></p>
+      <p class="top-button"><%= link_to "Add item manually", new_item_path, class: "btn btn-default" %></p>
     </div>
   </div>
 
+  <div class="row cupboards">
+    <% @cupboards.each do |cupboard| %>
+      <%= link_to cupboard.name, cupboard_path(cupboard), class:"btn btn-default"  %>
+    <% end %>
+  </div>
 
-<% @cupboards.each do |cupboard| %>
-  <%= link_to cupboard.name, cupboard_path(cupboard), class:"btn btn-default"  %>
-<% end %>
+  <h4 class="title">Links</h4>
+  <div class="row">
+    <div class="col-md-2 footer-buttons">
+      <%= link_to "Recipes", recipes_path, class:"btn btn-default" %>
+      <%= link_to "Shopping List", items_shopping_list_path, class:"btn btn-default" %>
+    </div>
+    <h4 class="title">Add something</h4>
+    <div class="col-md-2 footer-buttons">
+      <%= link_to "Add cupboard", new_cupboard_path, class:"btn btn-default" %>
+      <%= link_to "Add Category", new_category_path, class:"btn btn-default" %>
+    </div>
+  </div>
