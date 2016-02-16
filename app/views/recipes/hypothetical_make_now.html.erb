@@ -1,0 +1,18 @@
+<h1>Hypothetical make now</h1>
+
+<%= form_tag(recipes_hypothetical_make_now_path, :method => "get") do %>
+  <%= text_field_tag :hypo_item, params[:hypo_item], class: "form-control", placeholder: "Enter your Hypo item" %><br>
+  <button class="btn btn-default", type="submit">Submit</button>
+<% end %>
+
+If you were to buy <%= @hypo_item %> you could make:
+
+ <% @hypo_recipes.each do |recipe| %>
+    <table class="table">
+      <tr>
+         <img class="center-block" style="width: 100px;", src="<%= recipe.picture_url %>">
+         <td><%= link_to recipe.name, recipe_path(recipe) %></td>
+       
+      </tr>
+    </table>
+    <% end %>

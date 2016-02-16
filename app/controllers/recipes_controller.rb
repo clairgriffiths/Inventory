@@ -38,6 +38,11 @@ class RecipesController < ApplicationController
     @recipes = Recipe.all.select{|recipe| recipe.make_now? != false}
   end
   
+  def hypothetical_make_now
+    @hypo_item = params[:hypo_item]
+    @hypo_recipes = Recipe.all.select{|recipe| recipe.ingredients.all?{|ing| ing.in_stock? || ing.name == @hypo_item}}
+  end
+  
 private
   
   def recipe_params

@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   get  'items/shopping_list' => 'items#shopping_list'
   get 'recipes/make_now' => 'recipes#make_now'
+  get 'recipes/hypothetical_make_now' => 'recipes#hypothetical_make_now'
   root 'cupboards#index'
   
   resources :cupboards 
