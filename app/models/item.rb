@@ -5,7 +5,7 @@ class Item < ActiveRecord::Base
   require "google/api_client"
   require "google_drive"
   
-  
+    
   # Populating items from barcode scan
   def self.get_eans
     session = GoogleDrive.saved_session("config.json")
