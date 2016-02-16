@@ -1,28 +1,27 @@
-== README
+== INVENTORY APP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This app is an inventory app with several pieces of functionality:
 
-Things you may want to cover:
+ITEM INVENTORY
+After scanning barcodes with an Android app and saving the resulting file to Google Drive, the Inventory app:
+  - Makes a call to Google Drive and saves the resulting CSV file to a temporary location.
+  - Opens the temporary file and parses the data
+    - If the barcode matches one stored in the internal database it increases the quantity by 1
+    - If not it makes a call to the searchupc API to see if the product exists
+      - If it does it creates a new Item with the Name from the successful call
+      - If not it creates a new Item
+    - Any new items are flagged for 'cataloguing' which allows further information (including category) to be input
+    
+SHOPPING LIST
+Any items flagged as a repeat purchase are added to a shopping list once the quantity reaches 1 or less
 
-* Ruby version
+RECIPES
+There is a separate library of recipes which displays the ingredients required.
+  - For each item, if it is 'in stock' the quantity is displayed
+  - If it is not in stock an 'out of stock' message is displayed
+  
+TO BE IMPLEMENTED
+- Once a recipe is selected to be made, if any items are missing they are added to the shopping list
+- Display a list of recipes that can be made with current items in stock
+- Add the ability to 'temporarily' add items in stock (i.e. planning on buying them) and list possible recipes that can be made
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
