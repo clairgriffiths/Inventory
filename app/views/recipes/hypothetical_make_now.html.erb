@@ -5,14 +5,18 @@
   <button class="btn btn-default", type="submit">Submit</button>
 <% end %>
 
-If you were to buy <%= @hypo_item %> you could make:
-
- <% @hypo_recipes.each do |recipe| %>
-    <table class="table">
-      <tr>
-         <img class="center-block" style="width: 100px;", src="<%= recipe.picture_url %>">
-         <td><%= link_to recipe.name, recipe_path(recipe) %></td>
-       
-      </tr>
-    </table>
-    <% end %>
+<% if params[:hypo_item] != nil %>
+  <% if @hypo_recipes != [] %>
+    <p>If you were to buy <%= @hypo_item %> you could make:</p>
+    <% @hypo_recipes.each do |recipe| %>
+      <table class="table">
+        <tr>
+           <img class="center-block" style="width: 100px;", src="<%= recipe.picture_url %>">
+           <td><%= link_to recipe.name, recipe_path(recipe) %></td>
+        </tr>
+      </table>
+      <% end %>
+  <% else %>
+    <p>I'm afraid there aren't any recipes you can make with that </p>
+  <% end %>
+<% end %>

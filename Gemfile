@@ -23,6 +23,7 @@ gem "nested_form"
 #API
 gem 'httparty', '~> 0.13.7'
 gem 'google-api-client', '< 0.9'
+# 3rd party gem
 gem 'google_drive', '~> 1.0', '>= 1.0.5'
 
 # Use jquery as the JavaScript library
@@ -46,6 +47,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'pry'
+  gem 'pry-rails', '~> 0.3.4'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

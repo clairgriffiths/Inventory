@@ -7,47 +7,41 @@ class Item < ActiveRecord::Base
   
     
   # Populating items from barcode scan
-  def self.get_eans
-    session = GoogleDrive.saved_session("config.json")
-    file = session.file_by_title("Barcode Scanner history")
-    # Overwrites whatever was in there before
-    file.download_to_file("/home/nitrous/code/Inventory/tmp/test.txt")
-    # Deletes the file from the drive, not locally
-    file.delete
-  end
+  
   
   def self.extract_eans
-    CSV.foreach("/home/nitrous/code/Inventory/tmp/test.txt") do |csv|
+    @eans1 = []
+    # How would this work in Heroku?
+    CSV.foreach("/home/nitrous/code/projects/Inventory/tmp/test.txt") do |csv|
       @eans1 << csv[0]
     end
-    @eans1
+      @eans1.each do |ean|
+        add_items(if_ean_exists?(ean))
+      end
   end
   
-  def self.ean_exists?
-    # Need to get the list of EAN numbers
-    @eans1.each do |ean|
-      if Item.where(:ean => ean).blank?
-        @ean_lookup << ean
-        @ean_lookup
-      else
-        @item1 = Item.find_by(:ean => ean)
-        @item1.update(:quantity => (@item1.quantity += 1))
-      end
+  def self.if_ean_exists?(ean)
+    # how do I get this from extract_eans?
+    # if Item.find_by(:ean => '000').blank?
+    if !Item.find_by(:ean => ean).blank?
+      item = Item.find_by(:ean => ean)
+      item.quantity += 1
+      item.save
+    else
+     ean
     end
   end
     
-  def self.add_items(eans)
+  def self.add_items(ean)
     access_token = "29DF7AE5-3FD2-47AA-BDC0-6D30145D6611"
-    eans.each do |ean|
-      url = "http://www.searchupc.com/handlers/upcsearch.ashx?request_type=3&access_token=#{access_token}&upc=#{ean}"
-      request = HTTParty.get(url)
-      body = JSON.parse(request.body)
-      if body == {} || body["0"]["productname"] == nil
-        Item.create(ean: ean, quantity: 1)
-      else
-        @api_name = body["0"]["productname"]
-        Item.create(name: @api_name, quantity: 1)
-      end
+    url = "http://www.searchupc.com/handlers/upcsearch.ashx?request_type=3&access_token=#{access_token}&upc=#{ean}"
+    request = HTTParty.get(url)
+    body = JSON.parse(request.body)
+    if body == {} || body["0"]["productname"] == nil
+      Item.create(ean: ean, quantity: 1)
+    else
+      @api_name = body["0"]["productname"]
+      Item.create(name: @api_name, quantity: 1)
     end
   end
   

@@ -6,6 +6,7 @@
     <thead>
       <tr>
         <td>Name</td>
+        <td>Ean</td>
         <td>Quantity</td>
         <td>Category</td>
         <td>Weight</td>
@@ -17,6 +18,7 @@
       <tr>
       <% @need_cataloging.each do |item| %>
         <td><%= item.name %></td>
+        <td><%= item.ean %></td>
         <td><%= item.quantity %></td>
         <td><%= item.category %></td>
         <td><%= item.weight %></td>

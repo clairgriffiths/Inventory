@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get  'items/shopping_list' => 'items#shopping_list'
   get 'recipes/make_now' => 'recipes#make_now'
   get 'recipes/hypothetical_make_now' => 'recipes#hypothetical_make_now'
+  get 'cupboards/get_eans' => 'cupboards#get_eans'
   root 'cupboards#index'
   
   resources :cupboards 
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
     member do
       get :increase
       get :decrease
+      get :add_to_shopping_list
      
     end
   end

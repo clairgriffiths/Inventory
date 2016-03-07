@@ -1,2 +1,22 @@
-<h1>Cupboards#new</h1>
-<p>Find me in app/views/cupboards/new.html.erb</p>
+<div class="container">
+  <div class="row head">
+    <h1 class="heading">Cupboards</h1>
+  </div>
+    <div class="formtitle">
+    <%= bootstrap_form_for @cupboard do |form| %>
+      <% if @cupboard.errors.any? %>
+          <div id="error_explanation">
+            <h5><%= pluralize(@item.errors.count, "error") %> prohibited this entry from being saved:</h5>
+            <ul>
+              <% @cupboard.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <%= form.text_field :name %>
+        <%= form.submit %>
+      <% end %>
+    </div>
+</div>

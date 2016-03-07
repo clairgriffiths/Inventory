@@ -10,6 +10,13 @@ class Recipe < ActiveRecord::Base
     end
   end
   
-  
+  def add_to_shopping_list
+    # Not really working
+    need = self.ingredients.select{|ing| ing.in_stock? == false}
+    items = []
+    need.each{|ing| items << Item.find_by(name: ing.name)}
+    # won't find it if it doesn't exist!!
+    items.each{|item| item.update(shopping_list: true)}
+  end
   
 end
