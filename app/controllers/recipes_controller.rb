@@ -28,7 +28,7 @@ class RecipesController < ApplicationController
   
   def update
     if @recipe.update(recipe_params)
-      # do something
+      redirect_to @recipe
     else
       render 'edit'
     end
@@ -39,9 +39,10 @@ class RecipesController < ApplicationController
   end
   
   def hypothetical_make_now
-    @hypo_item = params[:hypo_item].capitalize
-    @all_recipes = Recipe.all.select{|recipe| recipe.ingredients.all?{|ing| ing.in_stock? || ing.name == @hypo_item}}
-    @hypo_recipes = @all_recipes.reject{ |recipe| recipe.make_now? != false}
+    @hypo_items  = params[:hypo_item].split(", ")
+    @all_recipes = Recipe.all.select{|recipe| recipe.ingredients.all?{|ing| ing.in_stock? || ing.name.in?(@hypo_items)}}
+    @hypo_recipes = @all_recipes.select{ |recipe| recipe.make_now? == false}
+    
   end
   
 private

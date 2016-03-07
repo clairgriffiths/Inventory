@@ -10,21 +10,17 @@
         <%= text_field_tag :hypo_item, params[:hypo_item], class: "form-control", placeholder: "Enter your Hypo item" %><br>
         <button class="btn btn-default", type="submit">Submit</button>
       <% end %>
-
       <% if params[:hypo_item] != nil %>
         <% if @hypo_recipes != [] %>
-          <p>If you were to buy <%= @hypo_item %> you could make:</p>
+          <p>If you were to buy <%= @hypo_items.join(" & ") %> you could make:</p>
           <% @hypo_recipes.each do |recipe| %>
             <table class="table">
-              <tr>
-                 <img class="center-block" style="width: 100px;", src="<%= recipe.picture_url %>">
-                 <td><%= link_to recipe.name, recipe_path(recipe) %></td>
-              </tr>
+              <img class="center-block" style="width: 100px;", src="<%= recipe.picture_url %>">
+              <td><%= link_to recipe.name, recipe_path(recipe) %></td>
             </table>
             <% end %>
         <% else %>
           <p>I'm afraid there aren't any recipes you can make with that </p>
         <% end %>
       <% end %>
-      
 </div>

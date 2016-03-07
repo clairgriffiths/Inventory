@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   
 
-  before_action :find_item, only: [:show, :edit, :update, :increase, :decrease, :decrease_by_portion]
+  before_action :find_item, only: [:show, :edit, :update, :increase, :decrease, :decrease_by_portion, :add_to_list]
   before_action :category_options, only: [:new, :edit, :update, :create]
   before_action :cupboard_options, only: [:new, :edit, :update, :create]
   
@@ -32,6 +32,13 @@ class ItemsController < ApplicationController
       @item.save
     end
     redirect_to cupboard_path(@item.cupboard, :anchor => "#{@item.category.name}")
+  end
+  
+  def add_to_list
+    @item.update(shopping_list: true)
+    if @item.save
+      flash[:success] = "#{@item} added to shopping list"
+    end
   end
   
   def new
@@ -70,9 +77,9 @@ class ItemsController < ApplicationController
     @items = Item.all.select{|item| item.shopping_list == true && item.quantity <= 1}
   end
   
-  private
+private
   
-  def item_params
+    def item_params
     params.require(:item).permit(:name, :category_id, :quantity, :ean, :weight, :packnumber, :shopping_list, :cupboard_id, :portion)
   end
   

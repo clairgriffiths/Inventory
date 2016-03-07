@@ -7,17 +7,15 @@
     </div>
   </div>
   
-  
   <div class="col-md-8">
-  
-    <% @recipes.each do |recipe| %>
     <table class="table">
-      <tr>
-         <img class="center-block" style="width: 100px;", src="<%= recipe.picture_url %>">
-         <td><%= link_to recipe.name, recipe_path(recipe) %></td>
-      </tr>
+      <% @recipes.each do |recipe| %>
+        <td>
+          <img class="center-block" style="width: 100px;", src="<%= recipe.picture_url %>">
+          <%= link_to recipe.name, recipe_path(recipe) %>
+        </td>
+      <% end %>
     </table>
-    <% end %>
   </div>
+ </div> 
   
-</div>

@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       get :increase
       get :decrease
       get :decrease_by_portion
-      get :add_to_shopping_list
+      get :add_to_list
      
     end
   end
