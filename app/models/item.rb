@@ -7,8 +7,6 @@ class Item < ActiveRecord::Base
   
     
   # Populating items from barcode scan
-  
-  
   def self.extract_eans
     @eans1 = []
     # How would this work in Heroku?
@@ -16,32 +14,35 @@ class Item < ActiveRecord::Base
       @eans1 << csv[0]
     end
       @eans1.each do |ean|
-        add_items(if_ean_exists?(ean))
+        
+        if ean_exists?(ean)
+          increase_item_quantity(ean)
+        else
+          add_item(ean)
+        end
       end
   end
   
-  def self.if_ean_exists?(ean)
-    # how do I get this from extract_eans?
-    # if Item.find_by(:ean => '000').blank?
-    if !Item.find_by(:ean => ean).blank?
-      item = Item.find_by(:ean => ean)
-      item.quantity += 1
-      item.save
-    else
-     ean
-    end
+  def self.ean_exists?(ean)
+    !Item.find_by(:ean => ean).blank?
   end
     
-  def self.add_items(ean)
+  def self.increase_item_quantity(ean)
+    item = Item.find_by(:ean => ean)
+    item.quantity += 1
+    item.save
+  end
+    
+  def self.add_item(ean)
     access_token = "29DF7AE5-3FD2-47AA-BDC0-6D30145D6611"
     url = "http://www.searchupc.com/handlers/upcsearch.ashx?request_type=3&access_token=#{access_token}&upc=#{ean}"
     request = HTTParty.get(url)
     body = JSON.parse(request.body)
-    if body == {} || body["0"]["productname"] == nil
-      Item.create(ean: ean, quantity: 1)
+    if body == {} || body["0"]["productname"] == " "
+      item = Item.create(ean: ean, quantity: 1)
     else
       @api_name = body["0"]["productname"]
-      Item.create(name: @api_name, quantity: 1)
+      Item.create(name: @api_name, quantity: 1, ean: ean)
     end
   end
   

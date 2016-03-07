@@ -25,12 +25,18 @@ class CupboardsController < ApplicationController
   end
   
   def get_eans
-    
     session = GoogleDrive.saved_session("config.json")
     file = session.file_by_title("Barcode Scanner history")
     # This overwrites whatever was in there before
     file.download_to_file("/home/nitrous/code/projects/Inventory/tmp/test.txt")
-    redirect_to root_path
+    if File.zero?("/home/nitrous/code/projects/Inventory/tmp/test.txt")
+      flash[:danger] = "Nothing was imported"
+    else
+      Item.extract_eans
+      flash[:success] = "Items were imported"
+      file.delete
+      redirect_to root_path
+    end
   end
   
 private
