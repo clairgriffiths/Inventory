@@ -7,9 +7,7 @@
   </div>
   
   <div class="row category-jumplinks">
-    
     <% @cupboard.categories.each do |category| %>
-    
       <%= link_to "#{category.name}", cupboard_path(:anchor => "#{category.name}"), class: "btn btn-default" %>
     <% end %>
   </div>
@@ -23,25 +21,28 @@
       <tbody>
         <tr>
           <% @cupboard.category_items(category).each do |item| %>
-          <td class="plus-and-minus"><%= link_to increase_item_path(item), class: "btn btn-default" do %>
-            <i class="glyphicon glyphicon-plus"></i>
-          <% end %>
-            <%= link_to decrease_item_path(item), class: "btn btn-default" do %>
-            <i class="glyphicon glyphicon-minus"></i>
-          <% end %>
+            <td class="plus-and-minus"><%= link_to increase_item_path(item), class: "btn btn-default" do %>
+              <i class="glyphicon glyphicon-plus"></i>
+            <% end %>
+              <%= link_to decrease_item_path(item), class: "btn btn-default" do %>
+                <i class="glyphicon glyphicon-minus"></i>
+              <% end %>
+            </td>
+            <% if item.weight? %>
+              <td class="quantity"><%= item.quantity %> x <%= item.weight %>g</td>
+            <% else %>
+              <td class="quantity"><%= item.quantity %> x <%= item.packnumber %></td>
+            <% end %>
+            <td class="name"><%= item.name %></td>
+            <td class="portion-minus"> <%= link_to decrease_by_portion_item_path(item), class: "btn btn-default" do %>
+               <i class="glyphicon glyphicon-minus"></i>
+             <% end %>
           </td>
-          <% if item.weight? %>
-          <td class="quantity"><%= item.quantity %> x <%= item.weight %>g</td>
-          <% else %>
-          <td class="quantity"><%= item.quantity %> x <%= item.packnumber %></td>
-          <% end %>
-          <td class="name" ><%= item.name %></td>
-          
         </tr>
-        <% end %>
+        <% end %><!-- cupboard category items -->
       </tbody>
      </table>
-    <% end %>
+    <% end %> <!--cupboard categories-->
    </div>
 </div>
   

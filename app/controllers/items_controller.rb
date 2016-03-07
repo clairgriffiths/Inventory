@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   
 
-  before_action :find_item, only: [:show, :edit, :update, :increase, :decrease]
+  before_action :find_item, only: [:show, :edit, :update, :increase, :decrease, :decrease_by_portion]
   before_action :category_options, only: [:new, :edit, :update, :create]
   before_action :cupboard_options, only: [:new, :edit, :update, :create]
   
@@ -20,6 +20,17 @@ class ItemsController < ApplicationController
   def decrease
     @item.quantity -= 1
     @item.save
+    redirect_to cupboard_path(@item.cupboard, :anchor => "#{@item.category.name}")
+  end
+  
+  def decrease_by_portion
+    if @item.weight?
+      @item.weight -= @item.portion
+      @item.save
+    else
+      @item.packnumber -= @item.portion
+      @item.save
+    end
     redirect_to cupboard_path(@item.cupboard, :anchor => "#{@item.category.name}")
   end
   
@@ -62,7 +73,7 @@ class ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:item).permit(:name, :category_id, :quantity, :ean, :weight, :packnumber, :shopping_list, :cupboard_id)
+    params.require(:item).permit(:name, :category_id, :quantity, :ean, :weight, :packnumber, :shopping_list, :cupboard_id, :portion)
   end
   
   def category_options

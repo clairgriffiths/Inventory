@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160307123947) do
+ActiveRecord::Schema.define(version: 20160307152456) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20160307123947) do
     t.integer  "packnumber"
     t.boolean  "shopping_list"
     t.integer  "cupboard_id"
+    t.integer  "portion"
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id"

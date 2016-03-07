@@ -23,7 +23,7 @@ tbody > tr > td {
   }
 
 .name {
-  width: 300px;
+  width: 250px;
   text-align: left;
   font-weight: bold;
   float: left;
@@ -39,6 +39,11 @@ tbody > tr > td {
 .quantity{
   float: left;
   margin-top: 8px;
+  width: 80px;
+}
+
+.portion-minus {
+  width: 25px;
 }
 
 .cupboards {
