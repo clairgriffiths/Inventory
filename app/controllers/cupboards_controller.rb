@@ -28,8 +28,8 @@ class CupboardsController < ApplicationController
     session = GoogleDrive.saved_session("config.json")
     file = session.file_by_title("Barcode Scanner history")
     # This overwrites whatever was in there before
-    file.download_to_file("/home/nitrous/code/projects/Inventory/tmp/test.txt")
-    if File.zero?("/home/nitrous/code/projects/Inventory/tmp/test.txt")
+    file.download_to_file("#{Rails.root}/tmp/test.txt")
+    if File.zero?("#{Rails.root}/tmp/test.txt")
       flash[:danger] = "Nothing was imported"
     else
       Item.extract_eans

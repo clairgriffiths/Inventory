@@ -3,7 +3,7 @@ class Cupboard < ActiveRecord::Base
   
   
   def categories
-    self.items.map{|item| item.category}
+    self.items.map{|item| item.category}.uniq
   end
   
   def category_items(category)
