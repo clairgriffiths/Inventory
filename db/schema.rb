@@ -11,16 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215102324) do
+ActiveRecord::Schema.define(version: 20160307123947) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "cupboard_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-  add_index "categories", ["cupboard_id"], name: "index_categories_on_cupboard_id"
 
   create_table "cupboards", force: :cascade do |t|
     t.string   "name"
@@ -48,9 +45,11 @@ ActiveRecord::Schema.define(version: 20160215102324) do
     t.integer  "weight"
     t.integer  "packnumber"
     t.boolean  "shopping_list"
+    t.integer  "cupboard_id"
   end
 
   add_index "items", ["category_id"], name: "index_items_on_category_id"
+  add_index "items", ["cupboard_id"], name: "index_items_on_cupboard_id"
 
   create_table "recipes", force: :cascade do |t|
     t.string   "name"

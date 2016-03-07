@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
   
   belongs_to :category
+  belongs_to :cupboard
   
   require "google/api_client"
   require "google_drive"
@@ -14,7 +15,6 @@ class Item < ActiveRecord::Base
       @eans1 << csv[0]
     end
       @eans1.each do |ean|
-        
         if ean_exists?(ean)
           increase_item_quantity(ean)
         else

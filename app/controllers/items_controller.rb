@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
 
   before_action :find_item, only: [:show, :edit, :update, :increase, :decrease]
   before_action :category_options, only: [:new, :edit, :update, :create]
+  before_action :cupboard_options, only: [:new, :edit, :update, :create]
   
   
   def index
@@ -13,13 +14,13 @@ class ItemsController < ApplicationController
   def increase
     @item.quantity += 1
     @item.save
-    redirect_to cupboard_path(@item.category.cupboard, :anchor => "#{@item.category.name}")
+    redirect_to cupboard_path(@item.cupboard, :anchor => "#{@item.category.name}")
   end
   
   def decrease
     @item.quantity -= 1
     @item.save
-    redirect_to cupboard_path(@item.category.cupboard, :anchor => "#{@item.category.name}")
+    redirect_to cupboard_path(@item.cupboard, :anchor => "#{@item.category.name}")
   end
   
   def new
@@ -29,7 +30,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.create(item_params)
     if @item.save
-      redirect_to cupboard_path(@item.category.cupboard)
+      redirect_to cupboard_path(@item.cupboard)
       flash[:success] = "Yup, that saved"
     else
       render 'new'
@@ -61,11 +62,15 @@ class ItemsController < ApplicationController
   private
   
   def item_params
-    params.require(:item).permit(:name, :category_id, :quantity, :ean, :weight, :packnumber, :shopping_list)
+    params.require(:item).permit(:name, :category_id, :quantity, :ean, :weight, :packnumber, :shopping_list, :cupboard_id)
   end
   
   def category_options
     @category_options = Category.all.map{|c| [c.name, c.id]}
+  end
+  
+  def cupboard_options
+    @cupboard_options = Cupboard.all.map{|c| [c.name, c.id]}
   end
   
   def find_item
