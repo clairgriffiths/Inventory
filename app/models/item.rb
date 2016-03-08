@@ -21,6 +21,7 @@ class Item < ActiveRecord::Base
           add_item(ean)
         end
       end
+    # Deletes content of temp file in case of double press
     File.open("#{Rails.root}/tmp/test.txt",'w') {|file| file.truncate(0) }
   end
   
