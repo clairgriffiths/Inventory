@@ -1,2 +1,9 @@
-<h1 class="head">Add a new item</h1>
-<%= render 'form' %>
+<div class="container">
+  <div class="row head">
+    <div class="col-md-2">
+      <h1 class="heading">Add a new item</h1>
+      <p class="top-button"><%= link_to "Back to Cupboard", cupboards_path, class: "btn btn-default"  %></p>
+    </div>
+  </div>
+  <%= render 'form' %>
+</div>

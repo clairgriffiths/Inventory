@@ -1,4 +1,4 @@
-<div class="container">
+
   <div class="formtitle">
     <%= bootstrap_form_for @item do |form| %>
     <% if @item.errors.any? %>
@@ -20,10 +20,8 @@
     <%= form.select(:cupboard_id, @cupboard_options) %>
     <%= form.number_field :weight %>
     <%= form.number_field :packnumber %>
-    <%= form.number_field :portion %>
     <%= form.check_box :shopping_list %>
     <%= form.submit %>
     <% end %>
     
   </div>
-</div>
