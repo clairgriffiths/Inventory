@@ -39,10 +39,11 @@ class RecipesController < ApplicationController
   end
   
   def hypothetical_make_now
-    @hypo_items  = params[:hypo_item].split(", ")
-    @all_recipes = Recipe.all.select{|recipe| recipe.ingredients.all?{|ing| ing.in_stock? || ing.name.in?(@hypo_items)}}
-    @hypo_recipes = @all_recipes.select{ |recipe| recipe.make_now? == false}
-    
+    if params[:hypo_items]
+      @hypo_items  = params[:hypo_items].split(", ")
+      @all_recipes = Recipe.all.select{|recipe| recipe.ingredients.all?{|ing| ing.in_stock? || ing.name.in?(@hypo_items)}}
+      @hypo_recipes = @all_recipes.select{ |recipe| recipe.make_now? == false}
+    end
   end
   
 private
