@@ -8,14 +8,23 @@
   </div>
   
   <div class="col-md-8">
-    <table class="table">
-      <% @recipes.each do |recipe| %>
-        <td>
-          <img class="center-block" style="width: 100px;", src="<%= recipe.picture_url %>">
+  <!-- Why isn't this an instance variable? -->
+  <% grouped_make_now_recipes.each do |meal, recipe| %>
+    
+    <h4 class="category-name"><%= meal %></h4>
+      <div class="row">
+       <% recipe.each do |recipe| %>
+        
+        <div class="col-sm-4">
+          <div class="table-recipe">
+            <%= link_to image_tag(recipe.picture_url), recipe_path(recipe), class: "center-block table-image" %>
+          
           <%= link_to recipe.name, recipe_path(recipe) %>
-        </td>
-      <% end %>
-    </table>
+            </div>
+        </div>
+        <% end %>
+    </div>
+    <% end %>
   </div>
- </div> 
+
   

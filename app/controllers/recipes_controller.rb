@@ -35,7 +35,7 @@ class RecipesController < ApplicationController
   end
   
   def make_now
-    @recipes = Recipe.all.select{|recipe| recipe.make_now? != false}
+     @recipes = Recipe.all
   end
   
   def hypothetical_make_now

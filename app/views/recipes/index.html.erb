@@ -18,13 +18,11 @@
         <div class="col-sm-4">
           <div class="table-recipe">
             <%= link_to image_tag(recipe.picture_url), recipe_path(recipe), class: "center-block table-image" %>
-          
-          <%= link_to recipe.name, recipe_path(recipe) %>
-            </div>
+            <%= link_to recipe.name, recipe_path(recipe) %>
+          </div>
         </div>
-        <% end %>
-    </div>
-    
+       <% end %>
+      </div>
     <% end %>
   </div>
   
