@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   
 
-  before_action :find_item, only: [:show, :edit, :update, :increase, :decrease, :decrease_by_portion, :add_to_list]
+  before_action :find_item, only: [:show, :edit, :update, :increase, :decrease, :add_to_list]
   before_action :category_options, only: [:new, :edit, :update, :create]
   before_action :cupboard_options, only: [:new, :edit, :update, :create]
   
@@ -20,25 +20,15 @@ class ItemsController < ApplicationController
   def decrease
     @item.quantity -= 1
     @item.save
-    redirect_to cupboard_path(@item.cupboard, :anchor => "#{@item.category.name}")
-  end
-  
-  def decrease_by_portion
-    if @item.weight?
-      @item.weight -= @item.portion
-      @item.save
-    else
-      @item.packnumber -= @item.portion
-      @item.save
+    if @item.shopping_list == true && @item.quantity <= 1
+      ShoppingListItem.create(name: "#{@item.name}", list: "Big Shop")
     end
     redirect_to cupboard_path(@item.cupboard, :anchor => "#{@item.category.name}")
   end
   
   def add_to_list
-    @item.update(shopping_list: true)
-    if @item.save
-      flash[:success] = "#{@item} added to shopping list"
-    end
+    ShoppingListItem.create(name: "#{@item.name}", list: "Week Shop")
+    redirect_to cupboard_path(@item.cupboard, :anchor => "#{@item.category.name}")
   end
   
   def new
@@ -73,14 +63,12 @@ class ItemsController < ApplicationController
     end
   end
   
-  def shopping_list
-    @items = Item.all.select{|item| item.shopping_list == true && item.quantity <= 1}
-  end
+  
   
 private
   
     def item_params
-    params.require(:item).permit(:name, :category_id, :quantity, :ean, :weight, :packnumber, :shopping_list, :cupboard_id, :portion)
+    params.require(:item).permit(:name, :category_id, :quantity, :ean, :weight, :packnumber, :shopping_list, :cupboard_id)
   end
   
   def category_options

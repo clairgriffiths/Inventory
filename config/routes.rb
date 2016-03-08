@@ -14,9 +14,7 @@ Rails.application.routes.draw do
     member do
       get :increase
       get :decrease
-      get :decrease_by_portion
       get :add_to_list
-     
     end
   end
   
