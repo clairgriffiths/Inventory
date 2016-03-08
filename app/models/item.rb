@@ -11,7 +11,7 @@ class Item < ActiveRecord::Base
   def self.extract_eans
     @eans1 = []
     # How would this work in Heroku?
-    CSV.foreach("/home/nitrous/code/projects/Inventory/tmp/test.txt") do |csv|
+    CSV.foreach("#{Rails.root}/tmp/test.txt") do |csv|
       @eans1 << csv[0]
     end
       @eans1.each do |ean|
@@ -21,6 +21,7 @@ class Item < ActiveRecord::Base
           add_item(ean)
         end
       end
+    File.open("#{Rails.root}/tmp/test.txt",'w') {|file| file.truncate(0) }
   end
   
   def self.ean_exists?(ean)

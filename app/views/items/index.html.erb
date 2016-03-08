@@ -9,8 +9,6 @@
         <td>Ean</td>
         <td>Quantity</td>
         <td>Category</td>
-        <td>Weight</td>
-        <td>Number</td>
         <td></td>
       </tr>      
     </thead>
@@ -21,8 +19,6 @@
         <td><%= item.ean %></td>
         <td><%= item.quantity %></td>
         <td><%= item.category %></td>
-        <td><%= item.weight %></td>
-        <td><%= item.packnumber %></td>
         <td><%= link_to "Update", edit_item_path(item) %></td>
       </tr>
       <% end %>
