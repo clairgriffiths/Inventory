@@ -17,7 +17,7 @@
   <div class="col-md-8">
     <% @cupboard.categories.each do |category| %>
     <h4 class="category-name" id="<%= category.name %>"><%= category.name %></h4>
-     <table class="table" >
+     <table class="table">
       <tbody>
         <tr>
           <% @cupboard.category_items(category).each do |item| %>

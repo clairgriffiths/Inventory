@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  get  'items/shopping_list' => 'items#shopping_list'
+  
   get 'recipes/make_now' => 'recipes#make_now'
   get 'recipes/hypothetical_make_now' => 'recipes#hypothetical_make_now'
   get 'cupboards/get_eans' => 'cupboards#get_eans'
@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   
   resources :cupboards 
   resources :categories 
-  resources :recipes   
+  resources :recipes 
+  resources :shopping_list_items
   resources :items do
     member do
       get :increase
