@@ -28,7 +28,7 @@ gem 'google-api-client', '< 0.9'
 gem 'google_drive', '~> 1.0', '>= 1.0.5'
 
 # Secret Keys
-gem 'figaro', '~> 1.1', '>= 1.1.1'
+
 
 # Text formatting for Recipes
 gem 'ckeditor', '~> 4.1', '>= 4.1.6'
@@ -57,6 +57,7 @@ group :development, :test do
   gem 'byebug'
   gem 'pry'
   gem 'pry-rails', '~> 0.3.4'
+  gem 'figaro', '~> 1.1', '>= 1.1.1'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
