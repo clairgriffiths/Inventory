@@ -5,8 +5,7 @@
       <p class="top-button"><%= link_to "Back to Cupboards", cupboards_path, class: "btn btn-default" %></p>
     </div>
   </div>
-  
-  <div class="row category-jumplinks">
+    <div class="row category-jumplinks">
     <% @cupboard.categories.each do |category| %>
       <%= link_to "#{category.name}", cupboard_path(:anchor => "#{category.name}"), class: "btn btn-default" %>
     <% end %>

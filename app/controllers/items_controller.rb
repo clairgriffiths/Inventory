@@ -28,7 +28,13 @@ class ItemsController < ApplicationController
   
   def add_to_list
     ShoppingListItem.create(name: "#{@item.name}", list: "Week Shop")
-    redirect_to cupboard_path(@item.cupboard, :anchor => "#{@item.category.name}")
+    if ShoppingListItem.create(name: "#{@item.name}", list: "Week Shop")
+      flash[:success] = "#{@item.name} added to shopping list"
+      redirect_to cupboard_path(@item.cupboard, :anchor => "#{@item.category.name}")
+      else
+      flash[:danger] = "Oops, something went wrong. Your item wasn't added to the shopping list"
+    end
+    
   end
   
   def new
