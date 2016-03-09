@@ -40,8 +40,9 @@
   </div>
     
     <div class="row">
-      <div class="col-md-3 instructions">
-        <%= @recipe.instructions %>
+      <h3 class="ingredient-title">Instructions</h3>
+      <div class="instructions">
+        <%= sanitize @recipe.instructions %>
       </div>
     </div>
   

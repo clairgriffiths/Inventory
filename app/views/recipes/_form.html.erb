@@ -21,7 +21,8 @@
       <% end %>
     </table>
 
-  <%= f.text_area :instructions %>
+  <%= f.label :instructions %></br>
+  <%= f.cktext_area :instructions %>
   <%= f.text_field :picture_url %>
   <%= f.submit "Save Recipe" %>
 
