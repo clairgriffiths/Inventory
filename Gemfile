@@ -27,6 +27,9 @@ gem 'google-api-client', '< 0.9'
 # 3rd party gem
 gem 'google_drive', '~> 1.0', '>= 1.0.5'
 
+# Secret Keys
+gem 'figaro', '~> 1.1', '>= 1.1.1'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

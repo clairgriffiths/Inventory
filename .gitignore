@@ -17,4 +17,6 @@
 /tmp
 
 
-/config.json
+
+# Ignore application configuration
+/config/application.yml
