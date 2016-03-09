@@ -2,16 +2,39 @@
 @import "bootstrap";
 
 body {
-  background-color: #16a085;
+  background: url("background.jpg"); 
 }
 
 .table {
-  background-color: #a5f3e3;
+  background-color: #BBCDE5;
   width: 40em;
   text-align: center;
   margin: 0 auto !important;
   float: none !important;
-  border-radius: 4px;
+  color: #022F40;
+  border-radius: 5px;
+  border: 1px solid #113537;
+  
+  td { 
+     border-top: none !important; 
+ }
+}
+
+.btn {
+  background-color: #113537;
+  color: #EEEBD3;
+  border: none;
+  &:hover {
+    background-color: #022F40;
+  }
+}
+
+.btn-primary {
+  background-color: #BBCDE5;
+ 
+  border: 1px #113537 solid;
+  color: #022F40;
+  font-weight: bold;
 }
 
 .head {

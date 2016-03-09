@@ -9,7 +9,7 @@
 
   <div class="row cupboards">
     <% @cupboards.each do |cupboard| %>
-      <%= link_to cupboard.name, cupboard_path(cupboard), class:"btn btn-default"  %>
+      <%= link_to cupboard.name, cupboard_path(cupboard), class:"btn btn-primary"  %>
     <% end %>
   </div>
 
@@ -21,8 +21,8 @@
     </div>
     <h4 class="title">Add something</h4>
     <div class="col-md-2 footer-buttons">
-      <%= link_to "Add cupboard", new_cupboard_path, class:"btn btn-default" %>
-      <%= link_to "Add Category", new_category_path, class:"btn btn-default" %>
+      <%= link_to "Add cupboard", new_cupboard_path, class:"btn btn-primary" %>
+      <%= link_to "Add Category", new_category_path, class:"btn btn-primary" %>
     </div>
     
     

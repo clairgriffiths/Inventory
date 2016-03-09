@@ -1,4 +1,8 @@
+require 'google_config'
+
 class CupboardsController < ApplicationController
+  
+  
   def new
     @cupboard = Cupboard.new
   end
@@ -25,7 +29,8 @@ class CupboardsController < ApplicationController
   end
   
   def get_eans
-    session = GoogleDrive.saved_session("config.json")
+    
+    session = GoogleDrive.saved_session(GoogleConfig.new)
     file = session.file_by_title("Barcode Scanner history")
     # This overwrites whatever was in there before
     file.download_to_file("#{Rails.root}/tmp/test.txt")
@@ -34,7 +39,7 @@ class CupboardsController < ApplicationController
     else
       Item.extract_eans
       flash[:success] = "Items were imported"
-      file.delete
+     # file.delete
       redirect_to root_path
     end
   end
