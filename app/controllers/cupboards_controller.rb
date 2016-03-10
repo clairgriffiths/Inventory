@@ -47,7 +47,7 @@ class CupboardsController < ApplicationController
 private
   
   def cupboard_params
-    params.require(:cupboard).permit(:name)
+    params.require(:cupboard).permit(:name, :image_link)
   end
   
 end
