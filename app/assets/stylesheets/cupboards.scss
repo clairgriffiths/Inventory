@@ -13,26 +13,21 @@
   text-align: center;
 }
 
-table {
-  width: 150px;
-  
-}
 
-tbody > tr > td {
+.table > tbody > tr > td {
     vertical-align: middle !important;
   }
 
 .name {
-  width: 250px;
+  width: auto;
   text-align: left;
   font-weight: bold;
   float: left;
   margin-top: 8px;
-  
 }
 
 .plus-and-minus {
-  width: 100px;
+  width: auto;
   float: left;
 }
 
@@ -64,4 +59,7 @@ tbody > tr > td {
   margin: 20px;
 }
 
+.add-to-list-button{
+  float: right;
+}
 

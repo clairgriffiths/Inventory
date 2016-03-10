@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   end
   
   def add_to_list
-    ShoppingListItem.create(name: "#{@item.name}", list: "Week Shop")
+    
     if ShoppingListItem.create(name: "#{@item.name}", list: "Week Shop")
       flash[:success] = "#{@item.name} added to shopping list"
       redirect_to cupboard_path(@item.cupboard, :anchor => "#{@item.category.name}")

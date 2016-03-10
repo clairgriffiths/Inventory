@@ -7,7 +7,6 @@ body {
 
 .table {
   background-color: #b9e9f9;
-  width: 40em;
   text-align: center;
   margin: 0 auto !important;
   float: none !important;
@@ -23,7 +22,7 @@ body {
 .btn {
   background-color: #113537;
   color: #EEEBD3;
-  border: none;
+  border: 1px #113537 solid;
   &:hover {
     background-color: #b9e9f9;
     color:  #113537;
@@ -33,7 +32,6 @@ body {
 
 .btn-primary {
   background-color: #b9e9f9;
- 
   border: 1px #113537 solid;
   color: #022F40;
   font-weight: bold;
@@ -42,6 +40,28 @@ body {
     color:  #b9e9f9;
   }
 }
+
+   
+  
+@media (max-width: 768px) {
+  .btn-responsive {
+    padding:2px 4px;
+    font-size:85%;
+    line-height: 1.2;
+    border-radius:3px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .btn-responsive {
+    padding:4px 9px;
+    font-size:95%;
+    line-height: 1.5;
+  }
+}
+
+
+
 
 .head {
   margin: 20px 20px 40px 20px;  
