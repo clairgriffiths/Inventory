@@ -1,5 +1,7 @@
 class GoogleConfig
   
+  # Created so that I can pass the secret id and key into the Google Drive gem
+  
   def client_id
     ENV["GOOGLE_DRIVE_CLIENT_ID"]
   end

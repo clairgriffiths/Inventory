@@ -39,7 +39,7 @@ class CupboardsController < ApplicationController
     else
       Item.extract_eans
       flash[:success] = "Items were imported"
-     # file.delete
+      file.delete
       redirect_to root_path
     end
   end
