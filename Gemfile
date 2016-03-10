@@ -29,6 +29,9 @@ gem 'google_drive', '~> 1.0', '>= 1.0.5'
 # Text formatting for Recipes
 gem 'ckeditor', '~> 4.1', '>= 4.1.6'
 
+# Login
+gem 'devise', '~> 3.5', '>= 3.5.6'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

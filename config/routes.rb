@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   
   
+  devise_for :users
+  
+  devise_scope :user do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+  
   get 'recipes/make_now' => 'recipes#make_now'
   get 'recipes/hypothetical_make_now' => 'recipes#hypothetical_make_now'
   get 'cupboards/get_eans' => 'cupboards#get_eans'
