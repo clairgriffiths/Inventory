@@ -67,16 +67,35 @@ body {
   margin: 20px 20px 40px 20px;  
 }
 
-.heading{
-  color: white;
-  float: left;
+.heading {
+    color: white;
+    float: left;
+    font-size: 32px;
+  }
+
+@media (max-width: 768px) {
+  .top-button {
+    padding:2px 4px;
+    font-size:85%;
+    line-height: 1.2;
+    border-radius:3px;
+    float: right;
+    margin-top: 20px;
+    margin-right: 5px;
+  }
 }
 
-.top-button {
-  float: right;
-  margin-top: 20px;
-  margin-right: 5px;
-}
+@media (min-width: 769px) and (max-width: 992px) {
+  .top-button {
+    float: right;
+    padding:4px 9px;
+    font-size:95%;
+    line-height: 1.5;
+    margin-top: 20px;
+    margin-right: 5px;
+  }
+  }
+
 
 .catalogue-flash {
   text-align: center;
@@ -97,6 +116,4 @@ body {
   color: white;
 }
 
-label {
-  color: #b9e9f9;
-}
+

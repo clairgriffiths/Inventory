@@ -51,13 +51,27 @@
   margin-bottom: 50px;
 }
 
-.icon-button img {
-  background-color: #113537;
+
+@media (max-width: 768px) {
+  .icon-button img {
+    background-color: #113537;
+    padding: 10px;
+    height: 100px;
+    border-radius: 5px;
+    margin: 20px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {
+  .icon-button img {
+    background-color: #113537;
   padding: 10px;
-  height: 150px;
+  height: 180px;
   border-radius: 5px;
   margin: 20px;
+  }
 }
+
 
 .add-to-list-button{
   float: right;
