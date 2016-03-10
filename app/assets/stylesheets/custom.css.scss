@@ -6,7 +6,7 @@ body {
 }
 
 .table {
-  background-color: #BBCDE5;
+  background-color: #b9e9f9;
   width: 40em;
   text-align: center;
   margin: 0 auto !important;
@@ -25,16 +25,22 @@ body {
   color: #EEEBD3;
   border: none;
   &:hover {
-    background-color: #022F40;
+    background-color: #b9e9f9;
+    color:  #113537;
+    border: 1px #113537 solid;
   }
 }
 
 .btn-primary {
-  background-color: #BBCDE5;
+  background-color: #b9e9f9;
  
   border: 1px #113537 solid;
   color: #022F40;
   font-weight: bold;
+  &:hover {
+    background-color: #113537;
+    color:  #b9e9f9;
+  }
 }
 
 .head {
@@ -69,4 +75,8 @@ body {
 
 .devise-links {
   color: white;
+}
+
+label {
+  color: #b9e9f9;
 }

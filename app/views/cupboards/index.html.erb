@@ -14,15 +14,15 @@
 
   <div class="row cupboards">
     <% @cupboards.each do |cupboard| %>
-      <%= link_to cupboard.name, cupboard_path(cupboard), class:"btn btn-primary"  %>
+    <%= link_to image_tag("/assets/#{cupboard.image_link}"), cupboard_path(cupboard), class: "icon-button" %>
     <% end %>
   </div>
-
+ 
   <h4 class="title">Links</h4>
   <div class="row">
     <div class="col-md-2 footer-buttons">
-      <%= link_to "Recipes", recipes_path, class:"btn btn-default" %>
-      <%= link_to "Shopping List", shopping_list_items_path, class:"btn btn-default" %>
+      <%= link_to image_tag("/assets/recipes.png"), recipes_path, class:"icon-button" %>
+      <%= link_to image_tag("/assets/list.png"), shopping_list_items_path, class:"icon-button" %>
     </div>
     <h4 class="title">Add something</h4>
     <div class="col-md-2 footer-buttons">
