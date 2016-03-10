@@ -12,8 +12,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+
 
 # Styling
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
@@ -26,9 +25,6 @@ gem 'httparty', '~> 0.13.7'
 gem 'google-api-client', '< 0.9'
 # 3rd party gem
 gem 'google_drive', '~> 1.0', '>= 1.0.5'
-
-# Secret Keys
-
 
 # Text formatting for Recipes
 gem 'ckeditor', '~> 4.1', '>= 4.1.6'
@@ -43,20 +39,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'rails_12factor', group: :production
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
-# Use Unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'pry'
   gem 'pry-rails', '~> 0.3.4'
+  # Secret keys
   gem 'figaro', '~> 1.1', '>= 1.1.1'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
