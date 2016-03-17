@@ -6,7 +6,7 @@
     <%= bootstrap_form_for @category do |form| %>
     <% if @category.errors.any? %>
         <div id="error_explanation">
-          <h5><%= pluralize(@item.errors.count, "error") %> prohibited this entry from being saved:</h5>
+          <h5><%= pluralize(@category.errors.count, "error") %> prohibited this entry from being saved:</h5>
           <ul>
             <% @category.errors.full_messages.each do |message| %>
             <li><%= message %></li>
