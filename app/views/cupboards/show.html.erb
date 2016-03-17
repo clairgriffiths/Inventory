@@ -19,9 +19,10 @@
     
      <table class="table">
       <tbody>
-        <tr>
+        
           <% @cupboard.category_items(category).each do |item| %>
           <% unless item.quantity == 0 %>
+        <tr>
             <td class="plus-and-minus"><%= link_to increase_item_path(item), class: "btn btn-default btn-responsive" do %>
               <i class="glyphicon glyphicon-plus"></i>
             <% end %>
