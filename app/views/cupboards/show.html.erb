@@ -10,7 +10,7 @@
       <%= link_to "#{category.name}", cupboard_path(:anchor => "#{category.name}"), class: "btn btn-primary" %>
     <% end %>
   </div>
-  
+   
   <br>
   
   <div class="col-md-8">
@@ -35,7 +35,7 @@
             <% else %>
               <td class="quantity"><%= item.quantity %> x <%= item.packnumber %></td>
             <% end %>
-            <td class="name"><%= item.name %></td>
+            <td class="name"><%= link_to item.name, edit_item_path(item) %></td>
           <td><%= link_to "Add to list", add_to_list_item_path(item), class: "btn btn-default btn-responsive add-to-list-button" %></td>
           <% end %>
         </tr>
